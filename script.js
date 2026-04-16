@@ -397,6 +397,7 @@ function setupQuiz() {
   quizQuestions.forEach((item, index) => {
     const wrapper = document.createElement("article");
     wrapper.className = "quiz-question";
+    wrapper.dataset.questionIndex = String(index);
 
     const title = document.createElement("h3");
     title.textContent = `${index + 1}. ${item.question}`;
@@ -408,6 +409,7 @@ function setupQuiz() {
     item.options.forEach((option, optionIndex) => {
       const label = document.createElement("label");
       label.className = "quiz-option";
+      label.dataset.optionIndex = String(optionIndex);
 
       const radio = document.createElement("input");
       radio.type = "radio";
@@ -422,6 +424,12 @@ function setupQuiz() {
     });
 
     wrapper.appendChild(options);
+
+    const result = document.createElement("p");
+    result.className = "quiz-question__result";
+    result.hidden = true;
+    wrapper.appendChild(result);
+
     container.appendChild(wrapper);
   });
 
@@ -429,9 +437,40 @@ function setupQuiz() {
     let points = 0;
 
     quizQuestions.forEach((item, index) => {
+      const wrapper = container.querySelector(`[data-question-index="${index}"]`);
       const checked = document.querySelector(`input[name="quiz-${index}"]:checked`);
+      const result = wrapper.querySelector(".quiz-question__result");
+      const optionLabels = wrapper.querySelectorAll(".quiz-option");
+
+      wrapper.classList.remove("is-correct", "is-wrong");
+      result.classList.remove("is-correct", "is-wrong");
+      result.hidden = false;
+
+      optionLabels.forEach((label, optionIndex) => {
+        label.classList.remove("is-correct", "is-wrong");
+        if (optionIndex === item.answer) {
+          label.classList.add("is-correct");
+        }
+      });
+
       if (checked && Number(checked.value) === item.answer) {
         points += 1;
+        wrapper.classList.add("is-correct");
+        result.classList.add("is-correct");
+        result.textContent = "Správně! Tuhle otázku máš dobře.";
+      } else {
+        wrapper.classList.add("is-wrong");
+        result.classList.add("is-wrong");
+
+        if (checked) {
+          const selectedLabel = checked.closest(".quiz-option");
+          if (selectedLabel && Number(checked.value) !== item.answer) {
+            selectedLabel.classList.add("is-wrong");
+          }
+          result.textContent = "Tady to nevyšlo. Zeleně je označená správná odpověď.";
+        } else {
+          result.textContent = "Tahle otázka zůstala bez odpovědi. Zeleně je označená správná odpověď.";
+        }
       }
     });
 

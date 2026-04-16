@@ -513,6 +513,27 @@ input {
   padding: 1rem;
 }
 
+.quiz-question.is-correct {
+  background: linear-gradient(135deg, rgba(228, 255, 241, 0.95), rgba(206, 247, 224, 0.9));
+}
+
+.quiz-question.is-wrong {
+  background: linear-gradient(135deg, rgba(255, 237, 240, 0.95), rgba(255, 220, 227, 0.9));
+}
+
+.quiz-question__result {
+  margin-top: 0.9rem;
+  font-weight: 800;
+}
+
+.quiz-question__result.is-correct {
+  color: #147a52;
+}
+
+.quiz-question__result.is-wrong {
+  color: #c03b55;
+}
+
 .quiz-options {
   display: grid;
   gap: 0.7rem;
@@ -526,6 +547,16 @@ input {
   padding: 0.8rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.86);
+}
+
+.quiz-option.is-correct {
+  background: rgba(25, 181, 122, 0.14);
+  outline: 2px solid rgba(25, 181, 122, 0.25);
+}
+
+.quiz-option.is-wrong {
+  background: rgba(255, 93, 115, 0.14);
+  outline: 2px solid rgba(255, 93, 115, 0.22);
 }
 
 @keyframes bob {
