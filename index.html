@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KyberHrdinové</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Interaktivní kyber dobrodružství</p>
+          <h1>KyberHrdinové</h1>
+          <p class="hero__lead">
+            Barevná mise pro děti a mládež, kde si vyzkoušíš, jak zůstat v bezpečí
+            na internetu, poznat podvod a chránit svoje soukromí.
+          </p>
+          <div class="hero__actions">
+            <button class="button button--primary" data-scroll-target="#mapa">
+              Spustit misi
+            </button>
+            <button class="button button--ghost" data-scroll-target="#konecny-kviz">
+              Skočit na závěrečný kvíz
+            </button>
+          </div>
+        </div>
+        <div class="hero__panel">
+          <div class="status-card">
+            <span class="status-card__label">Postup mise</span>
+            <div class="progress">
+              <div class="progress__bar" id="progressBar"></div>
+            </div>
+            <div class="status-card__numbers">
+              <strong id="scoreValue">0</strong>
+              <span>bodů</span>
+            </div>
+            <p id="progressText">Začni první úkol a získej odznak KyberHrdiny.</p>
+          </div>
+          <div class="floating-badges">
+            <span>Hesla</span>
+            <span>2FA</span>
+            <span>WiFi</span>
+            <span>Phishing</span>
+            <span>Soukromí</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="section section--intro" id="uvod">
+          <div class="section__header">
+            <p class="eyebrow">Začínáme</p>
+            <h2>Co je kyberbezpečnost?</h2>
+            <p>
+              Kyberbezpečnost znamená chránit sebe i svá data na internetu. Stejně jako
+              si zamykáš dveře od domu, musíš si „zamykat“ i své účty, telefon nebo počítač.
+            </p>
+          </div>
+          <div class="lesson-grid">
+            <article class="info-card intro-card">
+              <h3>Co chráníme</h3>
+              <ul class="check-list">
+                <li>Osobní údaje, jako je jméno, hesla nebo fotky.</li>
+                <li>Zařízení, jako je mobil, tablet nebo počítač.</li>
+                <li>Účty, jako jsou sociální sítě, hry nebo e-mail.</li>
+              </ul>
+            </article>
+            <article class="play-card intro-card">
+              <h3>Proč je důležitá</h3>
+              <p>
+                Internet je super místo, ale ne všechno na něm je bezpečné. Kyberbezpečnost
+                ti pomáhá:
+              </p>
+              <ul class="icon-list">
+                <li><span>🛡️</span> chránit soukromí, aby nikdo cizí neviděl tvoje data</li>
+                <li><span>💰</span> nepřijít o peníze při podvodech</li>
+                <li><span>🎮</span> nepřijít o herní účet</li>
+                <li><span>😶</span> vyhnout se nepříjemným lidem, hejterům a podvodníkům</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section--ten" id="desatero">
+          <div class="section__header">
+            <p class="eyebrow">Základní pravidla</p>
+            <h2>Desatero kyberbezpečnosti</h2>
+            <p>
+              Tohle je rychlý přehled nejdůležitějších pravidel, která pomáhají chránit
+              tvoje účty, zařízení i soukromí.
+            </p>
+          </div>
+          <div class="ten-grid">
+            <article class="ten-card"><strong>1.</strong> Používej klíčenku hesel a vytvářej silná hesla.</article>
+            <article class="ten-card"><strong>2.</strong> Když heslo vymýšlíš sám, používej delší větu nebo frázi.</article>
+            <article class="ten-card"><strong>3.</strong> Nepoužívej jedno heslo na více místech.</article>
+            <article class="ten-card"><strong>4.</strong> Zapni druhý faktor všude, kde to jde.</article>
+            <article class="ten-card"><strong>5.</strong> Na veřejných WiFi se nepřihlašuj do důležitých služeb.</article>
+            <article class="ten-card"><strong>6.</strong> Důvěřuj, ale vždy si ověřuj, s kým a kde komunikuješ.</article>
+            <article class="ten-card"><strong>7.</strong> Nenahrávej citlivé soubory do otevřených úložišť a kontroluj přílohy.</article>
+            <article class="ten-card"><strong>8.</strong> Dávej pozor na phishing, vydírání a kyberšikanu.</article>
+            <article class="ten-card"><strong>9.</strong> Přemýšlej o své digitální stopě a o tom, co po sobě necháváš online.</article>
+            <article class="ten-card"><strong>10.</strong> Nesdílej s nikým zbytečně osobní informace.</article>
+          </div>
+        </section>
+
+        <section class="section" id="mapa">
+          <div class="section__header">
+            <p class="eyebrow">Mapa lekce</p>
+            <h2>Vyber si zastávku</h2>
+            <p>
+              Každá zastávka přidá krátkou hru nebo rozhodování. Za správné odpovědi
+              sbíráš body.
+            </p>
+          </div>
+          <div class="mission-grid">
+            <a href="#hesla" class="mission-card mission-card--sun">Silná hesla</a>
+            <a href="#unikatni" class="mission-card mission-card--mint">Jedinečná hesla</a>
+            <a href="#wifi" class="mission-card mission-card--blue">Veřejná WiFi</a>
+            <a href="#duvera" class="mission-card mission-card--peach">Důvěra a ověření</a>
+            <a href="#prilohy" class="mission-card mission-card--rose">Přílohy a soubory</a>
+            <a href="#phishing" class="mission-card mission-card--violet">Phishing a šikana</a>
+            <a href="#stopa" class="mission-card mission-card--lime">Digitální stopa</a>
+            <a href="#osobni-udaje" class="mission-card mission-card--aqua">Osobní informace</a>
+            <a href="#konecny-kviz" class="mission-card mission-card--gold">Finální výzva</a>
+          </div>
+        </section>
+
+        <section class="section lesson" id="hesla">
+          <div class="section__header">
+            <p class="eyebrow">Bezpečná hesla</p>
+            <h2>Laboratoř silných hesel</h2>
+            <p>
+              Používej klíčenku hesel, generuj dlouhá hesla a když už heslo vymyslíš
+              sám, udělej z něj vlastní větu nebo frázi.
+            </p>
+          </div>
+          <div class="lesson-grid">
+            <article class="info-card">
+              <h3>Co si odnést</h3>
+              <ul class="check-list">
+                <li>Nejdůležitější hesla mají mít aspoň 16 znaků.</li>
+                <li>Každé heslo má být jiné.</li>
+                <li>Klíčenka hesel pomůže s přehledem i bezpečností.</li>
+                <li>Známé kombinace jako `1234` nebo `aaaa` jsou slabé.</li>
+              </ul>
+            </article>
+            <article class="play-card">
+              <h3>Vyrob superheslo</h3>
+              <label class="input-label" for="passphraseInput">
+                Napiš vlastní bezpečnou větu nebo heslo:
+              </label>
+              <input
+                id="passphraseInput"
+                class="text-input"
+                type="text"
+                placeholder="Třeba: MujPesSkace!KazdyDen7x"
+              />
+              <button class="button button--primary" id="checkPasswordButton">
+                Otestovat heslo
+              </button>
+              <div class="meter">
+                <div class="meter__fill" id="passwordMeter"></div>
+              </div>
+              <p class="feedback" id="passwordFeedback">
+                Tip: silné heslo by mělo být dlouhé a měl by v něm být mix znaků.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section lesson" id="unikatni">
+          <div class="section__header">
+            <p class="eyebrow">Bezpečné přihlášení</p>
+            <h2>Jedno heslo nestačí</h2>
+            <p>
+              Když někde heslo unikne, nechceš, aby otevřelo i další účty. A když zapneš
+              dvoufaktor, přidáváš další bezpečnostní bránu.
+            </p>
+          </div>
+          <div class="choice-grid" id="authChoices"></div>
+          <p class="feedback" id="authFeedback">
+            Vyber, co je bezpečné a co je riziko.
+          </p>
+        </section>
+
+        <section class="section lesson" id="wifi">
+          <div class="section__header">
+            <p class="eyebrow">Bezpečí na síti</p>
+            <h2>WiFi radar</h2>
+            <p>
+              Na otevřených veřejných WiFi neřeš důležité přihlášení a citlivé údaje.
+            </p>
+          </div>
+          <div class="scenario-card">
+            <h3>Co bys na veřejné WiFi dělal?</h3>
+            <div class="choice-grid" id="wifiChoices"></div>
+            <p class="feedback" id="wifiFeedback">
+              Vyber všechno, co je na veřejné WiFi bezpečnější.
+            </p>
+          </div>
+        </section>
+
+        <section class="section lesson" id="duvera">
+          <div class="section__header">
+            <p class="eyebrow">Ověřování lidí</p>
+            <h2>Důvěřuj, ale prověřuj</h2>
+            <p>
+              Na internetu může kdokoliv předstírat, že je někdo jiný. Opatrnost je
+              síla, ne strach.
+            </p>
+          </div>
+          <div class="scenario-card">
+            <h3>Chatovací rozhodovačka</h3>
+            <p class="scenario-text" id="trustScenarioText">
+              Někdo, koho znáš jen z internetu, tě zve na osobní setkání bez dospělého.
+            </p>
+            <div class="choice-grid" id="trustChoices"></div>
+            <p class="feedback" id="trustFeedback">
+              Vyber nejbezpečnější reakci.
+            </p>
+          </div>
+        </section>
+
+        <section class="section lesson" id="prilohy">
+          <div class="section__header">
+            <p class="eyebrow">Soubory a přílohy</p>
+            <h2>Detektiv příloh</h2>
+            <p>
+              Citlivé soubory nepatří do otevřených úložišť a každou přílohu je potřeba
+              před otevřením zkontrolovat.
+            </p>
+          </div>
+          <div class="lesson-grid">
+            <article class="info-card">
+              <h3>Rychlá pravidla</h3>
+              <ul class="check-list">
+                <li>Nenahrávej osobní doklady do veřejných úložišť.</li>
+                <li>Neotevírej soubor, když nevíš, kdo a proč ho poslal.</li>
+                <li>Nejdřív ověř odesílatele a obsah zpráv.</li>
+              </ul>
+            </article>
+            <article class="play-card">
+              <h3>Otevřel bys to?</h3>
+              <div class="choice-grid" id="attachmentChoices"></div>
+              <p class="feedback" id="attachmentFeedback">
+                Klikni na situaci a zjisti, jestli je bezpečná.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section lesson" id="phishing">
+          <div class="section__header">
+            <p class="eyebrow">Podvody online</p>
+            <h2>Lovec phishingu a stop šikaně</h2>
+            <p>
+              Kontroluj, jestli jsi na správné stránce, a když tě někdo na internetu
+              vydírá nebo uráží, řekni to dospělému.
+            </p>
+          </div>
+          <div class="lesson-grid">
+            <article class="play-card">
+              <h3>Poznáš podezřelou stránku?</h3>
+              <div class="browser-mockup">
+                <span class="browser-mockup__lock" id="lockIcon">?</span>
+                <span id="urlText">http://banka-prihlaseni-freebonus.cz</span>
+              </div>
+              <div class="choice-grid" id="phishingChoices"></div>
+              <p class="feedback" id="phishingFeedback">
+                Zkontroluj adresu i zabezpečení.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Když jde o kyberšikanu</h3>
+              <ul class="check-list">
+                <li>Neodpovídej na vydírání nebo výhrůžky sám.</li>
+                <li>Ulož důkazy, třeba screenshoty.</li>
+                <li>Řekni to rodiči, učiteli nebo jinému dospělému.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section lesson" id="stopa">
+          <div class="section__header">
+            <p class="eyebrow">Co po sobě necháváš</p>
+            <h2>Digitální stopa</h2>
+            <p>
+              Co jednou sdílíš, může na internetu zůstat. Zdarma služby často platíš
+              pozorností nebo daty.
+            </p>
+          </div>
+          <div class="scenario-card">
+              <h3>Správně, nebo risk?</h3>
+            <div class="choice-grid" id="footprintChoices"></div>
+            <p class="feedback" id="footprintFeedback">
+              Označ všechny bezpečnější volby.
+            </p>
+          </div>
+        </section>
+
+        <section class="section lesson bubble-section" id="osobni-udaje">
+          <div class="section__header">
+            <p class="eyebrow">Soukromí</p>
+            <h2>Moje osobní bublina</h2>
+            <p>
+              Nesdílej, kde právě jsi, že jsi sám doma, ani detaily o rodině. Fotky ze
+              zážitků sdílej radši až později.
+            </p>
+          </div>
+          <div class="bubble-board">
+            <div class="bubble-board__targets">
+              <div class="bubble bubble--safe" data-type="safe">Fotka z výletu o týden později</div>
+              <div class="bubble bubble--danger" data-type="danger">Jsme pryč 14 dní a doma nikdo není</div>
+              <div class="bubble bubble--safe" data-type="safe">Oblíbená píseň bez osobních detailů</div>
+              <div class="bubble bubble--danger" data-type="danger">Teď jsem sám doma na této adrese</div>
+              <div class="bubble bubble--danger" data-type="danger">Kde pracují moji rodiče</div>
+              <div class="bubble bubble--safe" data-type="safe">Obrázek z hry bez polohy a údajů</div>
+            </div>
+            <div class="bubble-board__zones">
+              <div class="drop-zone" data-zone="share">Můžu sdílet</div>
+              <div class="drop-zone" data-zone="keep">Nechám si pro sebe</div>
+            </div>
+            <p class="feedback" id="bubbleFeedback">
+              Přesuň bubliny do správné zóny kliknutím.
+            </p>
+          </div>
+        </section>
+
+        <section class="section section--highlight" id="konecny-kviz">
+          <div class="section__header">
+            <p class="eyebrow">Finální výzva</p>
+            <h2>Kvíz KyberHrdiny</h2>
+            <p>
+              Čeká tě delší závěrečná mise plná situací z běžného internetu. Odpověz
+              na 10 otázek a zjisti, jestli jsi připravený pomoci i ostatním.
+            </p>
+          </div>
+          <div id="quizContainer" class="quiz-list"></div>
+          <button class="button button--primary" id="gradeQuizButton">
+            Vyhodnotit kvíz
+          </button>
+          <p class="feedback feedback--large" id="quizFeedback">
+            Tady se po vyhodnocení ukáže tvůj výsledek.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
