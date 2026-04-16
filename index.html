@@ -316,21 +316,57 @@
               zážitků sdílej radši až později.
             </p>
           </div>
-          <div class="bubble-board">
-            <div class="bubble-board__targets">
-              <div class="bubble bubble--safe" data-type="safe">Fotka z výletu o týden později</div>
-              <div class="bubble bubble--danger" data-type="danger">Jsme pryč 14 dní a doma nikdo není</div>
-              <div class="bubble bubble--safe" data-type="safe">Oblíbená píseň bez osobních detailů</div>
-              <div class="bubble bubble--danger" data-type="danger">Teď jsem sám doma na této adrese</div>
-              <div class="bubble bubble--danger" data-type="danger">Kde pracují moji rodiče</div>
-              <div class="bubble bubble--safe" data-type="safe">Obrázek z hry bez polohy a údajů</div>
+          <div class="bubble-board bubble-quiz">
+            <div class="bubble-quiz__legend">
+              <span class="legend-pill legend-pill--safe">Zelená = správně</span>
+              <span class="legend-pill legend-pill--danger">Červená = špatně</span>
             </div>
-            <div class="bubble-board__zones">
-              <div class="drop-zone" data-zone="share">Můžu sdílet</div>
-              <div class="drop-zone" data-zone="keep">Nechám si pro sebe</div>
+            <div class="bubble-quiz__list">
+              <article class="bubble-question" data-type="safe">
+                <div class="bubble-question__prompt">Fotka z výletu o týden později</div>
+                <div class="bubble-question__actions">
+                  <button class="choice-button bubble-choice" type="button" data-answer="share">Můžu sdílet</button>
+                  <button class="choice-button bubble-choice" type="button" data-answer="keep">Nechám si pro sebe</button>
+                </div>
+              </article>
+              <article class="bubble-question" data-type="danger">
+                <div class="bubble-question__prompt">Jsme pryč 14 dní a doma nikdo není</div>
+                <div class="bubble-question__actions">
+                  <button class="choice-button bubble-choice" type="button" data-answer="share">Můžu sdílet</button>
+                  <button class="choice-button bubble-choice" type="button" data-answer="keep">Nechám si pro sebe</button>
+                </div>
+              </article>
+              <article class="bubble-question" data-type="safe">
+                <div class="bubble-question__prompt">Oblíbená píseň bez osobních detailů</div>
+                <div class="bubble-question__actions">
+                  <button class="choice-button bubble-choice" type="button" data-answer="share">Můžu sdílet</button>
+                  <button class="choice-button bubble-choice" type="button" data-answer="keep">Nechám si pro sebe</button>
+                </div>
+              </article>
+              <article class="bubble-question" data-type="danger">
+                <div class="bubble-question__prompt">Teď jsem sám doma na této adrese</div>
+                <div class="bubble-question__actions">
+                  <button class="choice-button bubble-choice" type="button" data-answer="share">Můžu sdílet</button>
+                  <button class="choice-button bubble-choice" type="button" data-answer="keep">Nechám si pro sebe</button>
+                </div>
+              </article>
+              <article class="bubble-question" data-type="danger">
+                <div class="bubble-question__prompt">Kde pracují moji rodiče</div>
+                <div class="bubble-question__actions">
+                  <button class="choice-button bubble-choice" type="button" data-answer="share">Můžu sdílet</button>
+                  <button class="choice-button bubble-choice" type="button" data-answer="keep">Nechám si pro sebe</button>
+                </div>
+              </article>
+              <article class="bubble-question" data-type="safe">
+                <div class="bubble-question__prompt">Obrázek z hry bez polohy a údajů</div>
+                <div class="bubble-question__actions">
+                  <button class="choice-button bubble-choice" type="button" data-answer="share">Můžu sdílet</button>
+                  <button class="choice-button bubble-choice" type="button" data-answer="keep">Nechám si pro sebe</button>
+                </div>
+              </article>
             </div>
             <p class="feedback" id="bubbleFeedback">
-              Přesuň bubliny do správné zóny kliknutím.
+              U každé kartičky vyber správnou možnost.
             </p>
           </div>
         </section>

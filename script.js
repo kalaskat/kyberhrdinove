@@ -321,71 +321,60 @@ function setupPasswordMeter() {
 }
 
 function setupBubbleGame() {
-  const bubbles = Array.from(document.querySelectorAll(".bubble"));
+  const questions = Array.from(document.querySelectorAll(".bubble-question"));
   const feedback = document.getElementById("bubbleFeedback");
-  const zones = Array.from(document.querySelectorAll(".drop-zone"));
-  let activeBubble = null;
-  let placedCount = 0;
+  let answeredCount = 0;
+  let correctCount = 0;
 
-  bubbles.forEach((bubble) => {
-    bubble.addEventListener("click", () => {
-      if (bubble.classList.contains("is-placed")) {
-        return;
-      }
-      bubbles.forEach((item) => item.classList.remove("is-selected"));
-      bubble.classList.add("is-selected");
-      activeBubble = bubble;
-      feedback.textContent = "Vyber bublinu a pak klikni na zónu, kam podle tebe patří.";
-    });
-  });
+  questions.forEach((question) => {
+    const choices = Array.from(question.querySelectorAll(".bubble-choice"));
 
-  zones.forEach((zone) => {
-    zone.addEventListener("click", () => {
-      if (!activeBubble) {
-        feedback.textContent = "Nejdřív klikni na jednu bublinu.";
-        return;
-      }
-
-      const bubbleType = activeBubble.dataset.type;
-      const targetZone = zone.dataset.zone;
-      const isCorrect =
-        (bubbleType === "safe" && targetZone === "share") ||
-        (bubbleType === "danger" && targetZone === "keep");
-
-      activeBubble.classList.remove("is-selected");
-      activeBubble.classList.add("is-placed");
-      zone.classList.add("has-items");
-      zone.appendChild(activeBubble);
-      placedCount += 1;
-
-      if (isCorrect) {
-        feedback.textContent =
-          bubbleType === "safe"
-            ? "Správně. Tohle jde sdílet bezpečněji, protože neprozrazuje citlivé detaily."
-            : "Správně. Tohle si nech pro sebe, aby ses zbytečně nevystavoval riziku.";
-      } else {
-        feedback.textContent =
-          "Tady pozor. Poloha, samota doma nebo rodinné detaily patří do osobní bubliny.";
-      }
-
-      activeBubble = null;
-
-      if (placedCount === bubbles.length) {
-        const safeInShare = document.querySelectorAll(
-          '[data-zone="share"] .bubble[data-type="safe"]'
-        ).length;
-        const dangerInKeep = document.querySelectorAll(
-          '[data-zone="keep"] .bubble[data-type="danger"]'
-        ).length;
-
-        if (safeInShare === 3 && dangerInKeep === 3) {
-          addScore("bubble", 2, "Skvěle! Udržel jsi osobní bublinu v bezpečí.");
-        } else {
-          updateProgress(
-            "Osobní bublina je skoro hotová. Jen si zapamatuj, které informace si nechat pro sebe."
-          );
+    choices.forEach((choice) => {
+      choice.addEventListener("click", () => {
+        if (question.dataset.answered === "true") {
+          return;
         }
-      }
+
+        const questionType = question.dataset.type;
+        const picked = choice.dataset.answer;
+        const correctAnswer = questionType === "safe" ? "share" : "keep";
+        const isCorrect = picked === correctAnswer;
+
+        question.dataset.answered = "true";
+        answeredCount += 1;
+
+        choices.forEach((item) => {
+          item.disabled = true;
+          item.classList.remove("is-correct", "is-wrong");
+          if (item.dataset.answer === correctAnswer) {
+            item.classList.add("is-correct");
+          }
+        });
+
+        if (isCorrect) {
+          correctCount += 1;
+          question.classList.add("is-correct");
+          feedback.textContent =
+            questionType === "safe"
+              ? "Správně. Tohle můžeš sdílet bezpečněji, protože neprozrazuje citlivé detaily."
+              : "Správně. Tohle si nech pro sebe, aby ses zbytečně nevystavoval riziku.";
+        } else {
+          question.classList.add("is-wrong");
+          choice.classList.add("is-wrong");
+          feedback.textContent =
+            "Tady pozor. Poloha, samota doma nebo rodinné detaily patří do osobní bubliny.";
+        }
+
+        if (answeredCount === questions.length) {
+          if (correctCount === questions.length) {
+            addScore("bubble", 2, "Skvěle! Udržel jsi osobní bublinu v bezpečí.");
+          } else {
+            updateProgress(
+              "Osobní bublina je hotová. Teď už víš, které informace můžeš sdílet a které si nechat pro sebe."
+            );
+          }
+        }
+      });
     });
   });
 }
